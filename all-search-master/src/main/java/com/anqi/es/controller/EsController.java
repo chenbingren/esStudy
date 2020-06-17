@@ -19,6 +19,7 @@ import org.elasticsearch.search.SearchHits;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletResponse;
@@ -30,12 +31,13 @@ import java.util.Date;
  * @author anqi
  */
 @RestController
+@RequestMapping("/demo")
 public class EsController {
 
     @Autowired
     RestHighLevelClientService service;
 
-    @GetMapping("/es/add")
+    @GetMapping("/add")
     public String testHigh(HttpServletResponse httpServletResponse) throws IOException{
         String source = "{\n" +
                 "  \"name\" : \"耐苦无领运动半袖\",\n" +
@@ -50,14 +52,7 @@ public class EsController {
     }
 
 
-
-    public void createEsProductUtils(Long id, Boolean isResource) {
-        Assert.notNull(isResource, "类型不能为空");
-        Assert.notNull(id, "id不能为空");
-
-    }
-
-    @GetMapping("/es/creIndex")
+    @GetMapping("/createIndex")
     public void createIndex() throws IOException{
         String settings =
                 "{\n" +
@@ -100,7 +95,7 @@ public class EsController {
     }
 
 
-    @GetMapping("/es/delIndex")
+    @GetMapping("/deleteIndex")
     public void deleteIndex() throws IOException{
         AcknowledgedResponse response = service.deleteIndex("idx_cloth");
         if (response.isAcknowledged()) {
@@ -108,13 +103,13 @@ public class EsController {
         }
     }
 
-    @GetMapping("/es/exists")
+    @GetMapping("/indexExists")
     public void indexExists() throws IOException{
         System.out.println(service.indexExists("idx_tt"));
     }
 
 
-    @Test
+    @GetMapping("/addDoc")
     public void addDoc() throws IOException {
         SnowflakeIdWorker idWorker = new SnowflakeIdWorker(0, 0);
         Cloth cloth = new Cloth(idWorker.nextId()+"","新版日系毛衣", "潮流前线等你来Pick!", 50, 199.99, new Date());
@@ -123,14 +118,14 @@ public class EsController {
         System.out.println(response.status());
     }
 
-    @Test
+    @GetMapping("/search")
     public void search() throws IOException{
         SearchResponse response = service.search("name", "毛衣", 0, 30, "idx_cloth");
         Arrays.asList(response.getHits().getHits())
                 .forEach(e -> System.out.println(e.getSourceAsString()));
     }
 
-    @Test
+    @GetMapping("/termSearch")
     public void termSearch() throws IOException{
         SearchResponse response = service.termSearch("name", "nike潮流毛衣", 0, 50);
         SearchHits hits = response.getHits();
@@ -139,7 +134,7 @@ public class EsController {
         }
     }
 
-    @Test
+    @GetMapping("/deleteDoc")
     public void deleteDoc() throws IOException{
         String id = "yvJ_Q24BymdyZW22Os2D";
         SearchResponse search = service.search("id", "2", 0, 5, "idx_cloth");
