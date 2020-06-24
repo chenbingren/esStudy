@@ -6,13 +6,15 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="batisplusdemo" />
         <module name="all-search" />
+        <module name="batisplusdemo" />
+        <module name="test" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="all-search" target="1.8" />
       <module name="batisplusdemo" target="1.8" />
+      <module name="test" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
