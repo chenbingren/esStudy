@@ -32,7 +32,7 @@ import java.util.Date;
  */
 @RestController
 @RequestMapping("/demo")
-public class EsController {
+public class EsDemoController {
 
     @Autowired
     RestHighLevelClientService service;
