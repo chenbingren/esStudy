@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/all-search-master/all-search.iml" filepath="$PROJECT_DIR$/all-search-master/all-search.iml" />
+      <module fileurl="file://$PROJECT_DIR$/batisplusdemo/batisplusdemo.iml" filepath="$PROJECT_DIR$/batisplusdemo/batisplusdemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/esStudy.iml" filepath="$PROJECT_DIR$/.idea/esStudy.iml" />
+    </modules>
+  </component>
+</project>
