@@ -18,10 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * <p>
- * mysql 代码生成器演示例子
- * </p>
- * 要注意代码包引入版本
+ * 使用模板进行自定义输出，不过还没验证完，有时间继续研究
  */
 public class MysqlGenerator2 {
 
@@ -31,28 +28,23 @@ public class MysqlGenerator2 {
 
         // 全局配置
         GlobalConfig gc = new GlobalConfig();
-//        String projectPath = System.getProperty("user.dir");
-//        gc.setOutputDir(projectPath + "/src/main/java");
-
-        gc.setOutputDir("F:\\CBR\\developer\\ideal\\mybatis-plus\\batisplusdemo\\src\\main\\java");
+        gc.setOutputDir("H:\\DFJX\\code\\local\\mygithup\\esStudy\\batisplusdemo\\src\\main\\java");
         gc.setAuthor("cbr");
         gc.setOpen(false);
-        // gc.setSwagger2(true); 实体属性 Swagger2 注解
         mpg.setGlobalConfig(gc);
-
         // 数据源配置
         DataSourceConfig dsc = new DataSourceConfig();
         dsc.setDbType(DbType.MYSQL);
         dsc.setDriverName("com.mysql.jdbc.Driver");
-        dsc.setUrl("jdbc:mysql://localhost:3306/wstro?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=true");
+        dsc.setUrl("jdbc:mysql://localhost:3306/cbr_test?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=true");
         dsc.setUsername("root");
-        dsc.setPassword("xyab1314");
+        dsc.setPassword("123456");
         mpg.setDataSource(dsc);
 
         // 包配置
         PackageConfig pc = new PackageConfig();
 //        pc.setModuleName(scanner("模块名"));
-        pc.setModuleName("user");
+        pc.setModuleName("sys_menu");
         pc.setParent("com.cbr.study.batisplusdemo");
         pc.setEntity("entity");
         pc.setController("controller");
@@ -82,20 +74,11 @@ public class MysqlGenerator2 {
             @Override
             public String outputFile(TableInfo tableInfo) {
                 // 自定义输出文件名 ， 如果你 Entity 设置了前后缀、此处注意 xml 的名称会跟着发生变化！！
-                return "F:/CBR/developer/ideal/mybatis-plus/batisplusdemo/src/main/resources/mapper/" + pc.getModuleName()
+                return "H:/DFJX/code/local/mygithup/esStudy/batisplusdemo/src/main/resources/mapper/" + pc.getModuleName()
                         + "/" + tableInfo.getEntityName() + "Mapper" + StringPool.DOT_XML;
             }
         });
-        /*
-        cfg.setFileCreate(new IFileCreate() {
-            @Override
-            public boolean isCreate(ConfigBuilder configBuilder, FileType fileType, String filePath) {
-                // 判断自定义文件夹是否需要创建
-                checkDir("调用默认方法创建的目录");
-                return false;
-            }
-        });
-        */
+
         cfg.setFileOutConfigList(focList);
         mpg.setCfg(cfg);
 

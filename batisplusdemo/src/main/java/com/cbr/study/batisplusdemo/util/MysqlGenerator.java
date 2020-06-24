@@ -7,10 +7,9 @@ import com.baomidou.mybatisplus.generator.config.*;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 
 /**
- * <p>
- * mysql 代码生成器演示例子
- * </p>
- * 要注意代码包引入版本
+ * 代码生成器，可以指定表生成
+ * 输出路径需要指向工程路径 gc.setOutputDir
+ *
  */
 public class MysqlGenerator {
 
@@ -28,7 +27,9 @@ public class MysqlGenerator {
         //这里是工程路径，取到是vueStudy，所以有偏差 //得到当前项目的路径
         String projectPath = System.getProperty("user.dir");
         //生成文件输出根目录
-        gc.setOutputDir("F:\\CBR\\developer\\ideal\\mybatis-plus\\batisplusdemo\\src\\main\\java");
+        //gc.setOutputDir("F:\\CBR\\developer\\ideal\\mybatis-plus\\batisplusdemo\\src\\main\\java");
+        gc.setOutputDir("H:\\DFJX\\code\\local\\mygithup\\esStudy\\batisplusdemo\\src\\main\\java");
+
         //是否覆盖已有文件
         gc.setFileOverride(true);
         //XML是否需要BaseResultMap
@@ -62,12 +63,12 @@ public class MysqlGenerator {
 
         //策略配置
         StrategyConfig sc = new StrategyConfig();
-        //表名前缀
+        //TODO 表名前缀
         sc.setTablePrefix("sys_");
         //表名生成策略
         sc.setNaming(NamingStrategy.underline_to_camel);
         // 需要生成的表--表名，没有指定则生成全部表
-        sc.setInclude(new String[] { "user" });
+        sc.setInclude(new String[] { "sys_menu" });
 //        sc.setSuperServiceClass(null);
 //        sc.setSuperServiceImplClass(null);
         //传入nul代表没有继承,可以传入
