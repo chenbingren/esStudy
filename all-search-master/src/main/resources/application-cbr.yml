@@ -1,0 +1,13 @@
+#不配置默认端口就是8080
+server:
+  port: 8080
+
+#elasticsearch:
+#  hostName: elasticsearch.default
+#  rest-port: 9200
+#  rest:
+#
+#spring:
+#  elasticsearch:
+#    rest:
+#      uris: elasticsearch.default:9200
